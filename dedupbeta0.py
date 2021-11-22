@@ -142,7 +142,7 @@ index_created = 2
 index_modified = 3
 
 dup_names = []
-dup_size = []
+
 dup_created = []
 dup_modified = []
 
@@ -152,23 +152,63 @@ size_index = 0
 limit_table = len(show_files)
 
 counter = 0
-
-
-
+#name check stuff
+all_names = []
+all_names_filtered = []
+count_name = 0
+#size check stuff
 all_sizes = []
-dup_index_size = []
-
+all_sizes_filtered = []
 count_size = 1
+#date created check stuff
+all_created = []
+all_created_filtered = []
+count_created = 2
+#date modified check stuff
+all_modified = []
+all_modified_filtered = []
+count_modified = 2
 
-
-
+#getting duplicated names
+for i in show_files:
+    all_names.append(show_files.index(show_files[count_name]))
+    all_names.append(show_files[count_name])
+    count_name = count_name + 4
+    if count_name >= len(show_files):
+        break
+all_names_filtered.append([item for item, count in collections.Counter(all_names).items() if count > 1])
+print(f'all names: {all_names}')
+print(f'Same name: {all_names_filtered}')
+#getting duplicated sizes
 for i in show_files:
     all_sizes.append(show_files.index(show_files[count_size]))
     all_sizes.append(show_files[count_size])
     count_size = count_size + 4
     if count_size >= len(show_files):
         break
-print(f'Same size: {all_sizes}')
+all_sizes_filtered.append([item for item, count in collections.Counter(all_sizes).items() if count > 1])
+print(f'all sizes: {all_sizes}')
+print(f'Same size: {all_sizes_filtered}')
+#getting duplicated date created
+for i in show_files:
+    all_created.append(show_files.index(show_files[count_created]))
+    all_created.append(show_files[count_created])
+    count_size = count_created + 4
+    if count_created >= len(show_files):
+        break
+all_created_filtered.append([item for item, count in collections.Counter(all_created).items() if count > 1])
+print(f'all created date: {all_created}')
+print(f'same Created date: {all_created_filtered}')
+#getting duplicated date modified
+for i in show_files:
+    all_modified.append(show_files.index(show_files[count_modified]))
+    all_modified.append(show_files[count_modified])
+    count_modified = count_modified + 4
+    if count_modified >= len(show_files):
+        break
+all_modified_filtered.append([item for item, count in collections.Counter(all_modified).items() if count > 1])
+print(f'all modified date: {all_modified}')
+print(f'same modified date: {all_modified_filtered}')
 
 
 
